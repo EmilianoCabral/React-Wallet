@@ -6,7 +6,7 @@ export const LogIn = () => {
                 <img
                     className="mx-auto mx-60px h-10 w-auto"
                     src="./src/assets/Banck.svg"
-                    alt="Your Company"
+                    alt="RedWallet"
                 />
                 <h2 className=" mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                     Sign in to your account
@@ -15,7 +15,7 @@ export const LogIn = () => {
             <div className="mt-10 max-w-96 h-96 sm:mx-auto sm:w-full sm:max-w-sm bg-white px-8 py-8 shadow-lg rounded-lg">
                 <form className="space-y-6" action="#" method="POST">
                     <div>
-                        <label htmlFor="email" className="p-5 block text-sm font-medium leading-6 text-gray-900">
+                        <label htmlFor="email" className=" block text-sm font-medium leading-6 text-gray-900">
                             Email address
                         </label>
                         <div className="mt-2">
@@ -25,7 +25,7 @@ export const LogIn = () => {
                                 type="email"
                                 autoComplete="email"
                                 required
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                className="p-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             />
                         </div>
                     </div>
@@ -50,7 +50,7 @@ export const LogIn = () => {
                                 type="password"
                                 autoComplete="current-password"
                                 required
-                                className="p-5 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                className="p-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             />
                         </div>
                     </div>
