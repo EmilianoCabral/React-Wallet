@@ -1,4 +1,5 @@
-import { Home } from './Components/Home'
+
+import { LogIn } from './Components/LogIn'
 
 import './index.css'
 
@@ -7,7 +8,7 @@ import './index.css'
 function App() {
   return (
     <>
-    <Home />
+    < LogIn />
     </>
   )
 }
