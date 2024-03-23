@@ -1,41 +1,5 @@
-import axios from "axios";
-import { useState } from "react"
-import  {useNavigate} from "react-router-dom"
-
 
 export const LogIn = () => {
-    const [username, setUsername] = useState ("");
-    const [password, setPassword] = useState ("");
-    const [error, setError] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
-    const navigate = useNavigate()
-
-    const handleSubmit =  async (e) => {
-        e.preventDefault();
-        if (!username || !password) {
-            setError('por favor, completa todos los campos.');
-            return;
-        }
-        setIsLoading(true);
-        try {
-            const response = await axios.post<{ token: string }>('http://wallet-main.eba-ccwdurgr.us-east-1.elasticbeanstalk.com/auth/login', {
-                username,
-                password
-            }); 
-            console.log('respuestas del servidor', response.data);
-
-            const userData = {
-                username,
-                token: response.data.token
-            };
-            localStorage.setItem('userData', JSON.stringify(userData));
-            navigate('/')
-        } catch (error) {
-            console.error('Error al iniciar sesión:', error.response.data);
-            setError('Credenciales incorrectas. Por favor, intenta de nuevo.');
-        }
-        setIsLoading(false);
-    };
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -49,7 +13,7 @@ export const LogIn = () => {
                 </h2>
             </div>
             <div className="mt-10 max-w-96 h-96 sm:mx-auto sm:w-full sm:max-w-sm bg-white px-8 py-8 shadow-lg rounded-lg">
-                <form onSubmit={handleSubmit} className="space-y-6" action="#" method="POST">
+                <form  className="space-y-6" action="#" method="POST">
                     <div>
                         <label htmlFor="email" className=" block text-sm font-medium leading-6 text-gray-900">
                             Email address
@@ -57,8 +21,6 @@ export const LogIn = () => {
                         <div className="mt-2">
                             <input
                                 placeholder="username"
-                                onChange={(e) => setUsername(e.target.value)}
-                                value={username}
                                 id="email"
                                 name="username"
                                 type="email"
@@ -85,8 +47,6 @@ export const LogIn = () => {
                         <div className="mt-2">
                             <input
                             placeholder="password"
-                            onChange={(e) => setPassword (e.target.value)}
-                            value={password}
                                 id="password"
                                 name="password"
                                 type="password"
@@ -98,12 +58,11 @@ export const LogIn = () => {
                     </div>
                     <div>
                         <button
-                            disabled={isLoading}
                             type="submit"
                             className="flex w-full justify-center rounded-md
                             bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
-                            {isLoading ? 'Cargando...' : 'Sign in'}
+                            Sign in
                         </button>
                     </div>
                 </form>
