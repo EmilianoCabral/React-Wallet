@@ -1,5 +1,25 @@
+import axios from "axios";
+
+
+axios
 
 export const LogIn = () => {
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        const regexEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+            if (email === '' || password === '') {
+                console.log('los campos estan vacios')
+            };
+            if (email !== '' && !regexEmail.test(email)) {
+                console.log('debes escribir un direccion de correro valida!')
+            };
+            axios.post('http://wallet-main.eba-ccwdurgr.us-east-1.elasticbeanstalk.com/auth/login', {email,password})
+            .then(res => {
+                console.log(res.data);
+            })
+    }
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -13,7 +33,7 @@ export const LogIn = () => {
                 </h2>
             </div>
             <div className="mt-10 max-w-96 h-96 sm:mx-auto sm:w-full sm:max-w-sm bg-white px-8 py-8 shadow-lg rounded-lg">
-                <form  className="space-y-6" action="#" method="POST">
+                <form onSubmit={handleSubmit}  className="space-y-6" action="#" method="POST">
                     <div>
                         <label htmlFor="email" className=" block text-sm font-medium leading-6 text-gray-900">
                             Email address
@@ -22,10 +42,9 @@ export const LogIn = () => {
                             <input
                                 placeholder="username"
                                 id="email"
-                                name="username"
                                 type="email"
                                 autoComplete="email"
-                                required
+                                name="email"
                                 className="p-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             />
                         </div>
@@ -48,10 +67,9 @@ export const LogIn = () => {
                             <input
                             placeholder="password"
                                 id="password"
-                                name="password"
                                 type="password"
                                 autoComplete="current-password"
-                                required
+                                name="password"
                                 className="p-4 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                             />
                         </div>
