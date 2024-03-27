@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 
 axios
@@ -10,14 +11,37 @@ export const LogIn = () => {
         const password = e.target.password.value;
         const regexEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
             if (email === '' || password === '') {
-                console.log('los campos estan vacios')
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "fields must not be empty!",
+                });
             };
             if (email !== '' && !regexEmail.test(email)) {
-                console.log('debes escribir un direccion de correro valida!')
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "fields must not be empty!",
+                });
             };
+            if (email !== 'juanperez@example.com' || password !== 'abc123') {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "invalid credentials!",
+                });
+            }
             axios.post('http://wallet-main.eba-ccwdurgr.us-east-1.elasticbeanstalk.com/auth/login', {email,password})
             .then(res => {
+                Swal.fire({
+                    icon: "success",
+                    title: "be logged in successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 console.log(res.data);
+                const tokenRecibido = res.data.token;
+                localStorage.setItem('token', tokenRecibido)
             })
     }
     return (
