@@ -1,10 +1,15 @@
 import axios from "axios";
-import Swal from 'sweetalert2'
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
+
 
 
 axios
 
 export const LogIn = () => {
+    const navigate = useNavigate();
+
+
     const handleSubmit = (e) =>{
         e.preventDefault();
         const email = e.target.email.value;
@@ -40,8 +45,9 @@ export const LogIn = () => {
                     timer: 1500
                 });
                 console.log(res.data);
-                const tokenRecibido = res.data.token;
-                localStorage.setItem('token', tokenRecibido)
+                const tokenRecibido = JSON.stringify(res.data.token);
+                localStorage.setItem('token', tokenRecibido);
+                navigate("/Home");
             })
     }
     return (
