@@ -1,5 +1,18 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const Token = localStorage.getItem('token');
+        console.log(Token);
+    if (Token === null) {
+        navigate('/');
+    }
+    }, []);
+    
     return (
         <div className="bg-white">
             <header className="absolute inset-x-0 top-0 z-50">
@@ -24,7 +37,7 @@ export const Home = () => {
                         <a href="#" className="text-sm font-semibold leading-6 text-gray-900">Company</a>
                     </div>
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                        <a href="#" className="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+                        <a href="#" className="text-sm font-semibold leading-6 text-gray-900">Log out <span aria-hidden="true">&rarr;</span></a>
                     </div>
                 </nav>
                 <div className="lg:hidden" role="dialog" aria-modal="true">

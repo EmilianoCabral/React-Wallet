@@ -44,8 +44,7 @@ export const LogIn = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                console.log(res.data);
-                const tokenRecibido = JSON.stringify(res.data.token);
+                const tokenRecibido = JSON.stringify(res.data.accessToken);
                 localStorage.setItem('token', tokenRecibido);
                 navigate("/Home");
             })
