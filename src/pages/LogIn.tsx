@@ -61,7 +61,7 @@ export const LogIn = () => {
                     Sign in to your account
                 </h2>
             </div>
-            <div className="mt-10 max-w-96 h-96 sm:mx-auto sm:w-full sm:max-w-sm bg-white px-8 py-8 shadow-lg rounded-lg">
+            <div className="mt-10 max-w-96 h-96 sm:mx-auto sm:w-full sm:max-w-sm bg-stone-300 px-8 py-8 shadow-lg rounded-lg">
                 <form onSubmit={handleSubmit}  className="space-y-6" action="#" method="POST">
                     <div>
                         <label htmlFor="email" className=" block text-sm font-medium leading-6 text-gray-900">
