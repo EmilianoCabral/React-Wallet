@@ -2,15 +2,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 
-
-
-axios
-
 export const LogIn = () => {
     const navigate = useNavigate();
-
-
-    const handleSubmit = (e) =>{
+    const handleSubmit = (e:any) =>{
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
@@ -38,6 +32,7 @@ export const LogIn = () => {
             }
             axios.post('http://wallet-main.eba-ccwdurgr.us-east-1.elasticbeanstalk.com/auth/login', {email,password})
             .then(res => {
+                console.log(res);
                 Swal.fire({
                     icon: "success",
                     title: "be logged in successfully",
@@ -47,21 +42,21 @@ export const LogIn = () => {
                 const tokenRecibido = JSON.stringify(res.data.accessToken);
                 localStorage.setItem('token', tokenRecibido);
                 navigate("/Home");
-            })
+            });
     }
     return (
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <main className="flex h-screen min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <img
                     className="mx-auto mx-60px h-10 w-auto"
                     src="./src/assets/Banck.svg"
                     alt="RedWallet"
                 />
-                <h2 className=" mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                <h2 className=" mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-indigo-600">
                     Sign in to your account
                 </h2>
             </div>
-            <div className="mt-10 max-w-96 h-96 sm:mx-auto sm:w-full sm:max-w-sm bg-stone-300 px-8 py-8 shadow-lg rounded-lg">
+            <section className="mt-10 max-w-96 h-96 sm:mx-auto sm:w-full sm:max-w-sm bg-white px-8 py-8 shadow-lg rounded-lg">
                 <form onSubmit={handleSubmit}  className="space-y-6" action="#" method="POST">
                     <div>
                         <label htmlFor="email" className=" block text-sm font-medium leading-6 text-gray-900">
@@ -69,7 +64,7 @@ export const LogIn = () => {
                         </label>
                         <div className="mt-2">
                             <input
-                                placeholder="username"
+                                placeholder="Username"
                                 id="email"
                                 type="email"
                                 autoComplete="email"
@@ -84,17 +79,10 @@ export const LogIn = () => {
                             className="block text-sm font-medium leading-6 text-gray-900">
                                 Password
                             </label>
-                            <div className="text-sm">
-                                <a 
-                                    href="#" 
-                                    className="font-semibold text-indigo-600 hover:text-indigo-500">
-                                        Forgot password?
-                                </a>
-                            </div>
                         </div>
                         <div className="mt-2">
                             <input
-                            placeholder="password"
+                                placeholder="password"
                                 id="password"
                                 type="password"
                                 autoComplete="current-password"
@@ -113,14 +101,13 @@ export const LogIn = () => {
                         </button>
                     </div>
                 </form>
-
                 <p className="mt-10 text-center text-sm text-gray-500">
-                    Not a member?{' '}
-                    <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-                        Start a 14 day free trial
+                    Not a member?
+                    <a href="/Usercreate" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                        create user account
                     </a>
                 </p>
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }
