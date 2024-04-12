@@ -1,5 +1,12 @@
+import { Link, } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
+    const navigate = useNavigate();
+    const handleLogout = () =>{
+        localStorage.removeItem('token');
+        navigate("/")
+    }
     return (
         <header className="bg-white">
             <div className="navbar bg-base-100">
@@ -8,10 +15,16 @@ export const Header = () => {
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><a>Homepage</a></li>
-                            <li><a>Portfolio</a></li>
-                            <li><a>About</a></li>
+                        <ul tabIndex={0} className="gap-4 menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                            <li>
+                                <Link to={"/Home"}>
+                                    <p>Home</p>
+                                </Link>
+                            </li>
+                            <li><a>Movements</a></li>
+                            <li><a>Transfer money</a></li>
+                            <li><a>Deposit money</a></li>
+                            <button onClick={handleLogout} className="btn">Log out</button>
                         </ul>
                     </div>
                 </div>

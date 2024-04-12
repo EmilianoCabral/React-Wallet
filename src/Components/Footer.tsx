@@ -2,13 +2,10 @@
 
 export const Footer = () => {
     return (
-        <footer className="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
-            <footer className="footer footer-center p-4 bg-base-300 text-base-content">
-                <aside>
+            <footer className="footer footer-center fixed w-full p-4 bg-base-300 text-base-content">
+                <div>
                     <p>Emiliano Cabral © 2024 </p>
-                </aside>
+                </div>
             </footer>
-        </footer>
-
     )
 }
