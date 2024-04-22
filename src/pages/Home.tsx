@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Cardinfo } from "../Components/Cardinfo";
+import { Listactiviti } from "../Components/Listactiviti";
 
 
 
@@ -14,12 +15,13 @@ export const Home = () => {
         }
     }, []);
     return (
-        <main className="w-full mx-auto container px-4 sm:max-xl:  md:max-w-1xl">
-            <section>
-                <div className="flex justify-center">
-                    <Cardinfo />
-                </div>
-            </section>
-        </main>
+            <main className="w-full mx-auto container px-4 sm:max-xl: md:max-w-1xl">
+                <section>
+                    <div className="flex justify-center">
+                        <Cardinfo />
+                        <Listactiviti />
+                    </div>
+                </section>
+            </main>
     )
 }

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export const Cardinfo = () => {
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <article className="card h-48 bg-base-100 shadow-xl">
             <div className="card-body">
                 <h2 className="card-title">Available money</h2>
                 <p>$ 300</p>
@@ -19,6 +19,6 @@ export const Cardinfo = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </article>
     )
 }

@@ -8,7 +8,7 @@ export const Header = () => {
         navigate("/")
     }
     return (
-        <header className="bg-white">
+        <header className="bg-white w-full mx-auto container">
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -21,8 +21,16 @@ export const Header = () => {
                                     <p>Home</p>
                                 </Link>
                             </li>
-                            <li><a>Movements</a></li>
-                            <li><a>Transfer money</a></li>
+                            <li>
+                            <Link to={"/Movements"}>
+                                    <p>Movements</p>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={"/Movements"}>
+                                    <p>Transfer money</p>
+                                </Link>
+                            </li>
                             <li><a>Deposit money</a></li>
                             <button onClick={handleLogout} className="btn">Log out</button>
                         </ul>

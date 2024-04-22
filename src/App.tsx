@@ -8,6 +8,7 @@ import { Transfermoney } from './Components/Transfer.money'
 import { Depositmoney } from './Components/Deposit.money'
 import { Header } from './Components/Header'
 import { Footer } from './Components/Footer'
+import { Movements } from './Components/Movements'
 
 
 
@@ -17,14 +18,15 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-        <Routes>
-          <Route  path='/' element={<LogIn />} />
-          <Route path='/Usercreate' element={<Usercreate />} />
-          <Route path='' element={<>not fount</>} />
-          <Route path='/Home' element={<Home />} />
-          <Route path='/Transfermoney' element={<Transfermoney />} />
-          <Route path='/Depositmoney' element={<Depositmoney />} />
-        </Routes>
+          <Routes>
+            <Route path='/' element={<LogIn />} />
+            <Route path='/Usercreate' element={<Usercreate />} />
+            <Route path='*' element={<>not fount</>} />
+            <Route path='/Home' element={<Home />} />
+            <Route path='/Transfermoney' element={<Transfermoney />} />
+            <Route path='/Depositmoney' element={<Depositmoney />} />
+            <Route path='/Movements' element={<Movements />} />
+          </Routes>
       <Footer />
     </BrowserRouter>
   )
